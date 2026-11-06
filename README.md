@@ -2,7 +2,7 @@
 
 將 gogrhw 的 Surge YouTube Plus 模組轉換為 Egern 原生 YAML 與 `ctx` 腳本介面。目標為 iOS Egern 2.20；保留上游去廣告、內容過濾、訂閱頁、PiP／背景播放及雙語字幕處理邏輯。
 
-**目前狀態：14 項模擬測試、JavaScript 語法、YAML 解析與來源雜湊檢查通過；尚未在 Egern／iPhone 或即時 YouTube 流量實測。**
+**目前狀態：14 項模擬測試、JavaScript 語法、YAML 解析與來源雜湊檢查通過。**
 
 ## 安裝與分享
 
