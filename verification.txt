@@ -1,0 +1,6 @@
+Node v24.19.0
+Passed 14 adapter/fixture tests.
+JavaScript syntax: passed.
+YAML/dependency validation: see validate.py output.
+Not tested in Egern/iOS or against live YouTube.
+YAML parsed; 2 native hooks cover 14 original rules; 4 Map Local entries; 1 redirect; 8 MITM hosts; 9 settings; local script exists; all 7 upstream SHA-256 checks passed.

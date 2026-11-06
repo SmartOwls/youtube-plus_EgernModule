@@ -1,0 +1,30 @@
+{
+  "original.sgmodule": {
+    "bytes": 8141,
+    "sha256": "869649fc8821ca6fec17b29d5955f77b09fbb5bd043e634e31b62ee7eb073fe0"
+  },
+  "youtube-subtitles-composite-response.js": {
+    "bytes": 54039,
+    "sha256": "f71c5e2df0042b07310e308ba23b98c272f55493fe3bf7d1aad42abcbd737fcf"
+  },
+  "youtube-subtitles-request.js": {
+    "bytes": 66370,
+    "sha256": "7b1db7f0e8faa11e67ebd199fe67b09c27ffecedb50ea498620e9671221facd6"
+  },
+  "youtube-subtitles-response.js": {
+    "bytes": 65372,
+    "sha256": "10522a04b6ef5f1ede1d648014cbdb4afac39595ee3c8081ce08cbee54f13bc0"
+  },
+  "youtube-subtitles-translate-response.js": {
+    "bytes": 653657,
+    "sha256": "c030b5965f59a138966a5115faf2e83b810d790cf74713e8a6a28c56bcab7c03"
+  },
+  "youtube.request.js": {
+    "bytes": 2995,
+    "sha256": "b6993909e0697467774d894684691619042486e44a3ceed151ae19305853834a"
+  },
+  "youtube.response.js": {
+    "bytes": 139162,
+    "sha256": "91fe1156674459451eb6ea2732b5297a9fb3dac4e7ef6b19b610f47618ae3806"
+  }
+}

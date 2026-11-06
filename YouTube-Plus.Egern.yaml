@@ -1,0 +1,136 @@
+name: YouTube Plus — Egern Native
+description: Egern 2.20 target; bundled upstream logic through native ctx API. Read
+  README before import.
+author: gogrhw + Maasea + Aioneas + QingRex + VirgilClyne; native adapter by Codex
+homepage: https://github.com/SmartOwls/youtube-plus_EgernModule
+env_schema:
+  blockUpload:
+    name: blockUpload
+    default_value: 'true'
+    options:
+    - 'true'
+    - 'false'
+  blockImmersive:
+    name: blockImmersive
+    default_value: 'true'
+    options:
+    - 'true'
+    - 'false'
+  blockShorts:
+    name: blockShorts
+    default_value: 'true'
+    options:
+    - 'true'
+    - 'false'
+  subsTabOnly:
+    name: subsTabOnly
+    default_value: 'true'
+    options:
+    - 'true'
+    - 'false'
+  debug:
+    name: debug
+    default_value: 'false'
+    options:
+    - 'true'
+    - 'false'
+  Type:
+    name: Type
+    default_value: Translate
+    options:
+    - Official
+    - Translate
+  AutoCC:
+    name: AutoCC
+    default_value: 'false'
+    options:
+    - 'true'
+    - 'false'
+  ShowOnly:
+    name: ShowOnly
+    default_value: 'false'
+    options:
+    - 'true'
+    - 'false'
+  Position:
+    name: Position
+    default_value: Forward
+    options:
+    - Forward
+    - Reverse
+url_rewrites:
+- match: ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?&ctier=L(&.+?),ctier,(.+)
+  location: https://$1$2$3
+  status_code: 302
+  disabled: true
+map_locals:
+- match: ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad
+  status_code: 200
+  body: ' '
+  headers:
+    Content-Type: text/plain
+- match: ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads
+  status_code: 200
+  body: ' '
+  headers:
+    Content-Type: text/plain
+- match: ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking)
+  status_code: 200
+  body: ' '
+  headers:
+    Content-Type: text/plain
+- match: ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext
+  status_code: 200
+  body: ' '
+  headers:
+    Content-Type: text/plain
+scriptings:
+- http_request:
+    name: YouTube Plus Native http_request
+    match: (?:^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse(\?|$)|^https?:\/\/(www|m|tv)\.youtube\.com\/youtubei\/v1\/player\?(.*)|^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player\?(.*)|^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext\?(.*)|^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse\?(.*)|^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse\?(.*))
+    script_url: https://raw.githubusercontent.com/SmartOwls/youtube-plus_EgernModule/main/youtube-plus.native.js
+    body_required: true
+    binary_body: true
+    max_size: 16777216
+    timeout: 120
+    env:
+      blockUpload: 'true'
+      blockImmersive: 'true'
+      blockShorts: 'true'
+      subsTabOnly: 'true'
+      debug: 'false'
+      Type: Translate
+      AutoCC: 'false'
+      ShowOnly: 'false'
+      Position: Forward
+    update_interval: 86400
+- http_response:
+    name: YouTube Plus Native http_response
+    match: (?:^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)|^https?:\/\/(www|m|tv)\.youtube\.com\/youtubei\/v1\/player\?(.*)|^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player\?(.*)|^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/get_watch\?(.*)|^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext\?(.*)subtype=(Official|External)|^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext\?(.*)subtype=Translate|^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate|^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate)
+    script_url: https://raw.githubusercontent.com/SmartOwls/youtube-plus_EgernModule/main/youtube-plus.native.js
+    body_required: true
+    binary_body: true
+    max_size: 16777216
+    timeout: 120
+    env:
+      blockUpload: 'true'
+      blockImmersive: 'true'
+      blockShorts: 'true'
+      subsTabOnly: 'true'
+      debug: 'false'
+      Type: Translate
+      AutoCC: 'false'
+      ShowOnly: 'false'
+      Position: Forward
+    update_interval: 86400
+mitm:
+  hostnames:
+  - '*.googlevideo.com'
+  - redirector*.googlevideo.com
+  - www.youtube.com
+  - m.youtube.com
+  - tv.youtube.com
+  - s.youtube.com
+  - music.youtube.com
+  - youtubei.googleapis.com
+manual: https://raw.githubusercontent.com/SmartOwls/youtube-plus_EgernModule/main/README.md
